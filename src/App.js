@@ -1,9 +1,8 @@
-import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TrendingMovies from './containers/TrendingMovies';
 import MovieDetails from './containers/MovieDetails';
 import Layout from './components/Layout';
-import '../src/navstyle.css'
+import '../src/navlink.css'
 import Upcoming from './containers/UpcomingMovie';
 function App() {
   return (

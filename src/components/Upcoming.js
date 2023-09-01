@@ -4,7 +4,6 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Typography } from '@mui/material';
 const UpcomingMovies = ({ upcoming }) => {
 
-
     return (
         <div>
             <Typography component="h1" variant="h4" gutterBottom={true}> Upcoming Movies</Typography>

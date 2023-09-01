@@ -1,7 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import store from '../redux/store';
 import { getTrendingMovies, resetState } from '../redux/movies';
 import Loader from '../components/Loader';
 import Movies from '../components/Movies';

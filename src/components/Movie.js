@@ -36,56 +36,50 @@ const Movie = ({ movie }) => {
                     {movie.tagline}
                 </Typography>
                 {movie.overview && (<>
-                                    <Typography component={"h3"} variant='h6'> Overview:
-                    
-                                    </Typography>
-                                    <Typography  variant="body1">
-                                        {movie.overview
-                                       }
-                                    </Typography>
-                                    </>
+                    <Typography component={"h3"} variant='h6'> Overview:
+
+                    </Typography>
+                    <Typography variant="body1">
+                        {movie.overview
+                        }
+                    </Typography>
+                </>
                 )
                 }
                 {movie.genres && (<>
-                                    <Typography component={"h3"} variant='h6'> Genre:
-                    
-                                    </Typography>
-                                    <Typography  variant="body1">
-                                        {movie.genres
-                                        .map((genre)=>genre.name)
-                                        .join(",")}
-                                    </Typography>
-                                    </>
+                    <Typography component={"h3"} variant='h6'> Genre:
+
+                    </Typography>
+                    <Typography variant="body1">
+                        {movie.genres
+                            .map((genre) => genre.name)
+                            .join(",")}
+                    </Typography>
+                </>
                 )
                 }
-                                {movie.release_date && (<>
-                                    <Typography component={"h3"} variant='h6'> Relase Date:
-                    
-                                    </Typography>
-                                    <Typography  variant="body1">
-                                        {movie.release_date
-                                       }
-                                    </Typography>
-                                    </>
+                {movie.release_date && (<>
+                    <Typography component={"h3"} variant='h6'> Relase Date:
+
+                    </Typography>
+                    <Typography variant="body1">
+                        {movie.release_date
+                        }
+                    </Typography>
+                </>
                 )
                 }
                 {movie.vote_average && (<>
-                                    <Typography component={"h3"} variant='h6'> Avarage Vote:
-                    
-                                    </Typography>
-                                    <Typography  variant="body1">
-                                        {movie.vote_average
-                                       }
-                                    </Typography>
-                                    </>
+                    <Typography component={"h3"} variant='h6'> Avarage Vote:
+
+                    </Typography>
+                    <Typography variant="body1">
+                        {movie.vote_average
+                        }
+                    </Typography>
+                </>
                 )
                 }
-
-
-
-
-
-
             </Grid>
 
         </GridStyled>

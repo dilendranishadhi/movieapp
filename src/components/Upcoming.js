@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import axios from 'axios';
-import { Grid, Typography } from '@mui/material';
-import { IMAGES_PATH } from '../config';
-import { styled } from "@mui/system";
-import { ImageList, ImageListItem, ImageListItemBar } from '@mui/material';
-import { getUpcomingMovies } from '../redux/upcoming';
-import { Link } from 'react-router-dom';
-
-const ImgStyled = styled('img')({
-    width: '100%',
-
-})
+import { Typography } from '@mui/material';
 const UpcomingMovies = ({ upcoming }) => {
 
 
     return (
         <div>
-            <h1>Upcoming Movies</h1>
+            <Typography component="h1" variant="h4" gutterBottom={true}> Upcoming Movies</Typography>
             <Carousel autoPlay={true} interval={3000} infiniteLoop={true}>
                 {upcoming.results.map((movie) => (
                     <div key={movie.id}>

@@ -20,9 +20,9 @@ export default class MovieDbApi{
         return response.json();
     }
 
-    getUpcomingMovies = async(page=1) =>{
+    getUpcomingMovies = async() =>{
         const response = await fetch(
-            `${this.apiBaseUrl}/movie/upcoming?api_key=${this.apiKey}&page=${page}`
+            `${this.apiBaseUrl}/movie/upcoming?api_key=${this.apiKey}`
         );
         return response.json();
     }

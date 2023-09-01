@@ -29,10 +29,6 @@ const initialState = {
             return{
             ...state,
             ...action.payload,
-            recommendations:{
-                ...action.payload.recommendations,
-                results:action.payload.recommendations.results.slice(0,10)
-            },
             isFetching:false
         }
 

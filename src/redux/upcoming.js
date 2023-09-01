@@ -1,41 +1,42 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const initialState = {
     results: [],
-    isFetching:false
-  };
+    isFetching: false,
+    currentMovieIndex: 0, 
+};
 
-
-  const upMovieSlice = createSlice({
+const upMovieSlice = createSlice({
     name: 'upMovieSlice',
     initialState,
-    reducers:{
-        getUpcomingMovies:(state)=>{
-            return{
+    reducers: {
+        getUpcomingMovies: (state) => {
+            return {
                 ...state,
-                isFetching:true
-            }
-
+                isFetching: true,
+            };
         },
-        fetchUpMovie:(state, action)=>{
+        fetchUpMovie: (state, action) => {
             return {
                 ...state,
                 results: [...state.results, ...action.payload.results],
                 hasMore: action.payload.page < action.payload.total_pages,
-                totalResults: action.payload.total_results,
-                page:action.payload.page,
-                totalPages: action.payload.totalPages,
-                isFetching: false
+                isFetching: false,
             };
-
         },
-        resetState:(state)=>{
+        resetState: (state) => {
             return initialState;
         },
 
-    }
-})
+        updateCurrentMovieIndex: (state, action) => {
+            return {
+                ...state,
+                currentMovieIndex: action.payload,
+            };
+        },
+    },
+});
 
-export const { getUpcomingMovies, fetchUpMovie, resetState } = upMovieSlice.actions;
-export default upMovieSlice.reducer; 
+export const { getUpcomingMovies, fetchUpMovie, resetState, updateCurrentMovieIndex, } = upMovieSlice.actions;
+
+export default upMovieSlice.reducer;

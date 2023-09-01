@@ -2,16 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    recommendations: {
         results:[],
         hasMore:false,
-        totalResults:0,
-        page:0,
-        totalPages:0,
         isFetching:false
-    }
-
-
 };
 
  const movieSlice = createSlice({

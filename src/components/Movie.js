@@ -70,7 +70,7 @@ const Movie = ({ movie }) => {
                 )
                 }
                 {movie.vote_average && (<>
-                    <Typography component={"h3"} variant='h6'> Avarage Vote:
+                    <Typography component={"h3"} variant='h6'> Average Vote:
 
                     </Typography>
                     <Typography variant="body1">

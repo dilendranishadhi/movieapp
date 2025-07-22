@@ -1,90 +1,64 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
+import { styled } from '@mui/system';
 import { IMAGES_PATH } from '../config';
-import { styled } from "@mui/system";
 
 const GridStyled = styled(Grid)(({ theme }) => ({
-    marginTop: theme.spacing(3),
-
-
+  marginTop: theme.spacing(3),
 }));
+
 const ImgStyled = styled('img')({
-    width: '100%',
+  width: '100%',
+  borderRadius: '4px',
+  objectFit: 'cover',
+});
 
-})
+const LabelValueBlock = ({ label, value }) => (
+  <>
+    <Typography component="h3" variant="h6">{label}</Typography>
+    <Typography variant="body1">{value}</Typography>
+  </>
+);
+
 const Movie = ({ movie }) => {
-    return (
-        <GridStyled container={true} spacing={2}>
-            <Grid item={true} md={3}>
-                {
-                    movie.poster_path ?
-                        <ImgStyled src={`${IMAGES_PATH}/w300${movie.poster_path}`}
-                            alt={movie.title}
-                        />
-                        :
-                        <ImgStyled />
-                }
-            </Grid>
-            <Grid item={true} md={9}>
-                <Typography component={"h1"} variant="h3">
-                    {movie.title}
-                </Typography>
-                <Typography component={"h3"} variant='h6'> Tagline:
+  const {
+    title,
+    tagline,
+    overview,
+    genres,
+    release_date,
+    vote_average,
+    poster_path
+  } = movie;
 
-                </Typography>
-                <Typography variant="body1">
-                    {movie.tagline}
-                </Typography>
-                {movie.overview && (<>
-                    <Typography component={"h3"} variant='h6'> Overview:
+  const posterSrc = poster_path ? `${IMAGES_PATH}/w300${poster_path}` : null;
 
-                    </Typography>
-                    <Typography variant="body1">
-                        {movie.overview
-                        }
-                    </Typography>
-                </>
-                )
-                }
-                {movie.genres && (<>
-                    <Typography component={"h3"} variant='h6'> Genre:
+  return (
+    <GridStyled container spacing={2}>
+      <Grid item xs={12} md={3}>
+        <ImgStyled
+          src={posterSrc || `${IMAGES_PATH}/placeholder.jpg`} // Optional fallback
+          alt={title || 'Movie Poster'}
+          loading="lazy"
+        />
+      </Grid>
 
-                    </Typography>
-                    <Typography variant="body1">
-                        {movie.genres
-                            .map((genre) => genre.name)
-                            .join(",")}
-                    </Typography>
-                </>
-                )
-                }
-                {movie.release_date && (<>
-                    <Typography component={"h3"} variant='h6'> Relase Date:
+      <Grid item xs={12} md={9}>
+        <Typography component="h1" variant="h3">{title}</Typography>
 
-                    </Typography>
-                    <Typography variant="body1">
-                        {movie.release_date
-                        }
-                    </Typography>
-                </>
-                )
-                }
-                {movie.vote_average && (<>
-                    <Typography component={"h3"} variant='h6'> Average Vote:
-
-                    </Typography>
-                    <Typography variant="body1">
-                        {movie.vote_average
-                        }
-                    </Typography>
-                </>
-                )
-                }
-            </Grid>
-
-        </GridStyled>
-
-    );
+        {tagline && <LabelValueBlock label="Tagline:" value={tagline} />}
+        {overview && <LabelValueBlock label="Overview:" value={overview} />}
+        {genres?.length > 0 && (
+          <LabelValueBlock
+            label="Genre:"
+            value={genres.map((genre) => genre.name).join(', ')}
+          />
+        )}
+        {release_date && <LabelValueBlock label="Release Date:" value={release_date} />}
+        {vote_average !== undefined && <LabelValueBlock label="Average Vote:" value={vote_average} />}
+      </Grid>
+    </GridStyled>
+  );
 };
 
 export default Movie;
